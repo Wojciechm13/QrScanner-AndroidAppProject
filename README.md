@@ -21,6 +21,8 @@ Must Have:
 Should Have:
 - Intuitive UI
 - Possibility to modify/add new information to the patient’s data
+- ToDo/Notes section connected with the specific patient, so that doctor can create reminder to do some specific action with that patient
+- Log out functionality
 
 Could Have:
 - Dark mode
