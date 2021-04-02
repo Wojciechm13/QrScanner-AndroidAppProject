@@ -27,6 +27,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         View view = layoutInflater.inflate(R.layout.row_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
+
+
     }
 
     @Override
@@ -56,8 +58,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    patientsList.remove(getAdapterPosition());
-                    notifyItemRemoved(getAdapterPosition());
+//                    patientsList.remove(getAdapterPosition());
+//                    notifyItemRemoved(getAdapterPosition());
                     return true;
                 }
             });

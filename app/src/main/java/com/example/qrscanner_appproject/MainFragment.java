@@ -67,37 +67,4 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        NavController navController = Navigation.findNavController(view);
-//
-//        Button patientsButton = view.findViewById(R.id.goPatientsButton);
-//        Button scannerButton = view.findViewById(R.id.scannerButton);
-//        Button profileButton = view.findViewById(R.id.profileButton);
-//
-//        patientsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navController.navigate(R.id.mainToPatients);
-//            }
-//        });
-//
-//        scannerButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navController.navigate(R.id.mainToScanner);
-//            }
-//        });
-//
-//        profileButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navController.navigate(R.id.mainToProfile);
-//            }
-//        });
-//
-//
-//    }
 }

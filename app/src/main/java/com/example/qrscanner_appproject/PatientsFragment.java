@@ -1,13 +1,16 @@
 package com.example.qrscanner_appproject;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,8 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -112,7 +120,64 @@ public class PatientsFragment extends Fragment {
         patientsList.add("Ewa");
 
 
+       ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+       itemTouchHelper.attachToRecyclerView(recyclerView);
+
+
+
         return view;
     }
+
+    String deletedPatient = null;
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            int position = viewHolder.getAdapterPosition();
+
+            switch (direction){
+                //Swipe from Right to Left
+                case ItemTouchHelper.LEFT:
+                    //Assigning patient to deleted patient to display it later in SNACKBAR
+                    deletedPatient = patientsList.get(position);
+
+                    patientsList.remove(position);
+                    recyclerAdapter.notifyItemRemoved(position);
+                    //Snackbar init
+                    Snackbar.make(recyclerView, deletedPatient, BaseTransientBottomBar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            patientsList.add(position, deletedPatient);
+                            recyclerAdapter.notifyItemInserted(position);
+                        }
+                    }).show();
+                    break;
+
+                //Swipe from Left to Right
+                case ItemTouchHelper.RIGHT:
+                    break;
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            //custom library from github link in notion
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(recyclerView.getContext(), R.color.colorRed))
+                    .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
+                    .addSwipeRightBackgroundColor(ContextCompat.getColor(recyclerView.getContext(), R.color.green))
+                    .addSwipeRightActionIcon(R.drawable.ic_baseline_star_24)
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
 
 }
