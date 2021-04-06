@@ -51,44 +51,63 @@ public class QrScannerFragment extends Fragment implements View.OnClickListener{
     }
 
     private void scanCode() {
-        IntentIntegrator integrator = new IntentIntegrator(this.getActivity());
+
+        IntentIntegrator integrator = IntentIntegrator.forSupportFragment(QrScannerFragment.this);
         integrator.setCaptureActivity(CaptureActivity.class);
         integrator.setOrientationLocked(false);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scanning code...");
         integrator.initiateScan();
     }
 
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data){
+//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//        if (result != null){
+//            if (result.getContents() != null){
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+//                builder.setMessage(result.getContents());
+//                builder.setTitle("Scanning result:");
+//                builder.setPositiveButton("Scan again", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        scanCode();
+//                    }
+//                }).setNegativeButton("Finish", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        getActivity().finish();
+//                    }
+//                });
+//
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+//
+//            }
+//            else {
+//                Toast.makeText(this.getContext(), "No results", Toast.LENGTH_LONG);
+//            }
+//        }
+//        else {
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
+
+    // Get the results:
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null){
-            if (result.getContents() != null){
-                AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-                builder.setMessage(result.getContents());
-                builder.setTitle("Scanning result:");
-                builder.setPositiveButton("Scan again", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        scanCode();
-                    }
-                }).setNegativeButton("Finish", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        getActivity().finish();
-                    }
-                });
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
+        if(result != null) {
+            if(result.getContents() == null) {
+                //Todo: `change the TOAST to AlertDialog'
+                Toast.makeText(this.getContext(), "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                //Todo: `change the TOAST to AlertDialog'
+                Toast.makeText(this.getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
-            else {
-                Toast.makeText(this.getContext(), "No results", Toast.LENGTH_LONG);
-            }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 }

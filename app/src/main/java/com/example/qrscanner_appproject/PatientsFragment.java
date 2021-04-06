@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,7 +33,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
  * Use the {@link PatientsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientsFragment extends Fragment {
+public class PatientsFragment extends Fragment implements RecyclerViewClickInterface{
 
 
     //Recycler view
@@ -95,7 +96,7 @@ public class PatientsFragment extends Fragment {
 
         //Init of recyclerView
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(patientsList);
+        recyclerAdapter = new RecyclerAdapter(patientsList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -160,6 +161,7 @@ public class PatientsFragment extends Fragment {
                     break;
 
                 //Swipe from Left to Right
+                //Todo: Add some action to swipe
                 case ItemTouchHelper.RIGHT:
                     break;
             }
@@ -180,4 +182,15 @@ public class PatientsFragment extends Fragment {
         }
     };
 
+    //Method for handling a click on a position from recyclerView
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(recyclerView.getContext(), patientsList.get(position), Toast.LENGTH_SHORT).show();
+    }
+
+    //Method for handling a longClick on a position from recyclerView
+    @Override
+    public void onLongItemClick(int position) {
+    //implement something here...
+    }
 }

@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
 
     List<String> patientsList;
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public RecyclerAdapter(List<String> patientsList) {
+    public RecyclerAdapter(List<String> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.patientsList = patientsList;
+        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -43,7 +45,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return patientsList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+
+    class ViewHolder extends RecyclerView.ViewHolder{
         ImageView rowImageView;
         TextView rowTextView, rowCountTextView;
 
@@ -54,20 +58,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             rowTextView = itemView.findViewById(R.id.rowTextView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
 
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                }
+            });
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
 //                    patientsList.remove(getAdapterPosition());
 //                    notifyItemRemoved(getAdapterPosition());
+                    recyclerViewClickInterface.onLongItemClick(getAdapterPosition());
                     return true;
                 }
             });
         }
 
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(view.getContext(), patientsList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
-        }
+
     }
+
+
 }
