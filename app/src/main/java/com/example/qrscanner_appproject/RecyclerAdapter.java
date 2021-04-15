@@ -3,6 +3,8 @@ package com.example.qrscanner_appproject;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,16 +12,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
 
     List<String> patientsList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
+    List<String> patientsListAll;
 
     public RecyclerAdapter(List<String> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.patientsList = patientsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
+        this.patientsListAll = new ArrayList<>(patientsList);
     }
 
     @NonNull
@@ -45,6 +51,42 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return patientsList.size();
     }
 
+    //Method for topMenus search option
+    Filter filter = new Filter() {
+        //run on a background thread
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<String> filteredList = new ArrayList<>();
+
+            if (charSequence.toString().isEmpty()){
+                filteredList.addAll(patientsListAll);
+            }
+            else {
+                for (String patient: patientsListAll) {
+                    if (patient.toLowerCase().contains(charSequence.toString().toLowerCase())){
+                        filteredList.add(patient);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        //run on UI thread
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults filterResults) {
+            patientsList.clear();
+            patientsList.addAll((Collection<? extends String>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
 
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -39,6 +39,9 @@
             android:id="@+id/patientsToMain"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_patients_to_patientsDetailsFragment"
+            app:destination="@id/patientsDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
@@ -49,5 +52,13 @@
             android:id="@+id/userProfileToMain"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientsDetailsFragment"
+        android:name="com.example.qrscanner_appproject.patientsDetailsFragment"
+        android:label="patientsDetailsFragment" >
+        <action
+            android:id="@+id/action_patientsDetailsFragment_to_patients"
+            app:destination="@id/patients" />
     </fragment>
 </navigation>

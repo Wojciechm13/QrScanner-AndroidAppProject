@@ -2,6 +2,7 @@ package com.example.qrscanner_appproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -10,6 +11,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
@@ -34,7 +36,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         }
 
-        QrScannerFragment qrScannerFragment = new QrScannerFragment();
+        //todo initialize the search in the topbar functionality (has some error)
+        //Init of topMenu
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.top_menu, menu);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) item.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                recyclerAdapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
+//        return super.onCreateOptionsMenu(menu);
+//    }
+
+    QrScannerFragment qrScannerFragment = new QrScannerFragment();
         PatientsFragment patientsFragment = new PatientsFragment();
         UserProfileFragment userProfileFragment = new UserProfileFragment();
         MainFragment mainFragment = new MainFragment();

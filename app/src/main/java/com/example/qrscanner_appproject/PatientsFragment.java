@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,6 +44,10 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
     List<String> patientsList;
+
+    //fragments
+    patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
+
 
 
 
@@ -85,6 +93,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -127,6 +136,11 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
 
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     String deletedPatient = null;
@@ -185,7 +199,12 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     //Method for handling a click on a position from recyclerView
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(recyclerView.getContext(), patientsList.get(position), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(recyclerView.getContext(), patientsList.get(position), Toast.LENGTH_SHORT).show();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        transaction.replace(R.id.fragmentContainer, patientsDetailsFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+
     }
 
     //Method for handling a longClick on a position from recyclerView
