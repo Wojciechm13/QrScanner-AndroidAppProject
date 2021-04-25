@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
 import android.os.Bundle;
 
@@ -10,13 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.qrscanner_appproject.R;
+
 
 public class patientsDetailsFragment extends Fragment {
 
     Button addNewMeasurementsButton;
 
     //Fragments
-    patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
+    com.example.qrscanner_appproject.view.patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
 
 
     @Override

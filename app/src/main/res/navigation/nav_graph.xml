@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.qrscanner_appproject.MainFragment"
+        android:name="com.example.qrscanner_appproject.view.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/qrScannerFragment"
-        android:name="com.example.qrscanner_appproject.QrScannerFragment"
+        android:name="com.example.qrscanner_appproject.view.QrScannerFragment"
         android:label="fragment_qr_scanner"
         tools:layout="@layout/fragment_qr_scanner" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/patients"
-        android:name="com.example.qrscanner_appproject.PatientsFragment"
+        android:name="com.example.qrscanner_appproject.view.PatientsFragment"
         android:label="fragment_patients"
         tools:layout="@layout/fragment_patients" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.example.qrscanner_appproject.UserProfileFragment"
+        android:name="com.example.qrscanner_appproject.view.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientsDetailsFragment"
-        android:name="com.example.qrscanner_appproject.patientsDetailsFragment"
+        android:name="com.example.qrscanner_appproject.view.patientsDetailsFragment"
         android:label="patientsDetailsFragment" >
         <action
             android:id="@+id/action_patientsDetailsFragment_to_patients"

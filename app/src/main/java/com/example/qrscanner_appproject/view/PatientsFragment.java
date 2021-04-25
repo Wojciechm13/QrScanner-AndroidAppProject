@@ -1,16 +1,12 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,9 +17,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.qrscanner_appproject.R;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -37,7 +32,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
  * Use the {@link PatientsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientsFragment extends Fragment implements RecyclerViewClickInterface{
+public class PatientsFragment extends Fragment implements RecyclerViewClickInterface {
 
 
     //Recycler view
@@ -46,7 +41,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     List<String> patientsList;
 
     //fragments
-    patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
+    com.example.qrscanner_appproject.view.patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
 
 
 

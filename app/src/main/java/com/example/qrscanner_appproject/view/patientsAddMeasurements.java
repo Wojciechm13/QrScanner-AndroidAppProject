@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.qrscanner_appproject.R;
 
 import java.util.Calendar;
 

@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QrScannerAppProject">
         <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".openAppActivity" />
+        <activity android:name=".view.openAppActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

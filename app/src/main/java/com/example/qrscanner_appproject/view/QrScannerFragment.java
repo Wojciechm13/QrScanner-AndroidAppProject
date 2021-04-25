@@ -1,7 +1,5 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.qrscanner_appproject.CaptureActivity;
+import com.example.qrscanner_appproject.R;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +7,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.qrscanner_appproject.R;
 
 import java.util.ArrayList;
 import java.util.Collection;
