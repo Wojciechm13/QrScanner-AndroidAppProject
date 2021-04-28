@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject;
+package com.example.qrscanner_appproject.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.view.MainFragment;
 import com.example.qrscanner_appproject.view.PatientsFragment;
 import com.example.qrscanner_appproject.view.QrScannerFragment;
