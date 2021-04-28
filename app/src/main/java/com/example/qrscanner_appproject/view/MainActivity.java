@@ -2,25 +2,34 @@ package com.example.qrscanner_appproject.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.view.MainFragment;
 import com.example.qrscanner_appproject.view.PatientsFragment;
 import com.example.qrscanner_appproject.view.QrScannerFragment;
 import com.example.qrscanner_appproject.view.UserProfileFragment;
+import com.example.qrscanner_appproject.viewModel.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
+    private MainActivityViewModel viewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        viewModel.init();
+        checkIfSignedIn();
         setContentView(R.layout.activity_main);
 
         //Bottom navigation
@@ -81,6 +90,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return false;
     }
+
+    private void checkIfSignedIn() {
+        viewModel.getCurrentUser().observe(this, user -> {
+            if (user != null) {
+                String message = "Welcome " + user.getDisplayName();
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT ).show();
+//                welcomeMessage.setText(message);
+            } else
+                startLoginActivity();
+        });
+    }
+
+    private void startLoginActivity() {
+        startActivity(new Intent(this, SignInActivity.class));
+        finish();
+    }
+
+//    public void signOut(View v) {
+//        viewModel.signOut();
+//    }
+
 }
 
 
