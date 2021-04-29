@@ -15,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QrScannerAppProject">
-        <activity android:name=".view.openAppActivity" />
 
 
         <activity android:name=".view.SignInActivity">
