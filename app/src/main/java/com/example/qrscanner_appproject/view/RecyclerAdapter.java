@@ -1,5 +1,8 @@
 package com.example.qrscanner_appproject.view;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,28 +10,31 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Patient;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-//    List<String> patientsList;
+
     ArrayList<Patient> patientsList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
-    List<String> patientsListAll;
 
     public RecyclerAdapter(ArrayList<Patient> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.patientsList = patientsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
-//        this.patientsListAll = new ArrayList<>(patientsList);
     }
 
 
@@ -49,48 +55,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.rowCountTextView.setText(patientsList.get(position).getName());
         holder.rowName.setText(patientsList.get(position).getLastName());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity)v.getContext();
+                patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("name", patientsList.get(position).getName());
+//                patientsDetailsFragment.setArguments(bundle);
+                patientsDetailsFragment.passPatient(patientsList.get(position));
+                appCompatActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.fragmentContainer, patientsDetailsFragment).addToBackStack(null).commit();
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return patientsList.size();
-    }
-
-    //Method for topMenus search option
-    Filter filter = new Filter() {
-        //run on a background thread
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<String> filteredList = new ArrayList<>();
-
-            if (charSequence.toString().isEmpty()){
-                filteredList.addAll(patientsListAll);
-            }
-            else {
-                for (String patient: patientsListAll) {
-                    if (patient.toLowerCase().contains(charSequence.toString().toLowerCase())){
-                        filteredList.add(patient);
-                    }
-                }
-            }
-
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filteredList;
-            return filterResults;
-        }
-
-        //run on UI thread
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults filterResults) {
-            patientsList.clear();
-//            patientsList.addAll((Collection<? extends String>) filterResults.values);
-            notifyDataSetChanged();
-        }
-    };
-
-    @Override
-    public Filter getFilter() {
-        return filter;
     }
 
 
@@ -104,26 +86,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             rowImageView = itemView.findViewById(R.id.rowImageView);
             rowName = itemView.findViewById(R.id.rowTextView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                }
-            });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-//                    patientsList.remove(getAdapterPosition());
-//                    notifyItemRemoved(getAdapterPosition());
-                    recyclerViewClickInterface.onLongItemClick(getAdapterPosition());
-                    return true;
-                }
-            });
         }
 
 
     }
+
 
 
 }

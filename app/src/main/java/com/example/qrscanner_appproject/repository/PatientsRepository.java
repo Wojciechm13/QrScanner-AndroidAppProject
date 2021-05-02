@@ -42,9 +42,9 @@ public class PatientsRepository {
     }
 
     private void loadPatients() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        Query query = ref.child("Patients");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Patients");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                for (DataSnapshot snapshot: dataSnapshot.getChildren()){

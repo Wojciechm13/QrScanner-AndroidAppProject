@@ -53,10 +53,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/profile" />
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/SSN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/designation"
+                android:layout_below="@+id/DOB"
                 android:layout_marginTop="12dp"
                 android:text="SSN"
                 android:textColor="#fff"
@@ -64,10 +64,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/designation" />
+                app:layout_constraintTop_toBottomOf="@+id/DOB" />
 
             <TextView
-                android:id="@+id/designation"
+                android:id="@+id/DOB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
@@ -195,6 +195,7 @@
 
 
             <TextView
+                android:id="@+id/BloodGroup"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -205,6 +206,7 @@
                 android:text="Blood group: B" />
 
             <TextView
+                android:id="@+id/CostsOfHospitalization"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

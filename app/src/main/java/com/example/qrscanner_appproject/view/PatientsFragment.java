@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Patient;
@@ -40,7 +41,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     //Recycler view
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
-    List<String> patientsList;
 
     //fragments
     com.example.qrscanner_appproject.view.patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
@@ -82,8 +82,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_patients, container, false);
 
-        //Init patientsList
-        patientsList = new ArrayList<>();
 
         //Init of recyclerView
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -96,21 +94,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-
-        //populating the list
-        patientsList.add("Martyna");
-        patientsList.add("Julia");
-        patientsList.add("Marcelina");
-        patientsList.add("Franek");
-        patientsList.add("Wojtek");
-        patientsList.add("Grucha");
-        patientsList.add("Rudy");
-        patientsList.add("Sobik");
-        patientsList.add("Jurczi");
-        patientsList.add("Smoku");
-        patientsList.add("Jan");
-        patientsList.add("Jano");
-        patientsList.add("Ewa");
 
 
        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
@@ -143,15 +126,15 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
                 //Swipe from Right to Left
                 case ItemTouchHelper.LEFT:
                     //Assigning patient to deleted patient to display it later in SNACKBAR
-                    deletedPatient = patientsList.get(position);
+                   // deletedPatient = patientsList.get(position);
 
-                    patientsList.remove(position);
+                    //patientsList.remove(position);
                     recyclerAdapter.notifyItemRemoved(position);
                     //Snackbar init
                     Snackbar.make(recyclerView, deletedPatient, BaseTransientBottomBar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            patientsList.add(position, deletedPatient);
+                           // patientsList.add(position, deletedPatient);
                             recyclerAdapter.notifyItemInserted(position);
                         }
                     }).show();
@@ -182,11 +165,10 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     //Method for handling a click on a position from recyclerView
     @Override
     public void onItemClick(int position) {
-        //Toast.makeText(recyclerView.getContext(), patientsList.get(position), Toast.LENGTH_SHORT).show();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        transaction.replace(R.id.fragmentContainer, patientsDetailsFragment ); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+//        transaction.replace(R.id.fragmentContainer, patientsDetailsFragment ); // give your fragment container id in first parameter
+//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+//        transaction.commit();
 
     }
 

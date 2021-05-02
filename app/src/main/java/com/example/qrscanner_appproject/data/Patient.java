@@ -44,4 +44,16 @@ public class Patient {
     public double getCostsOfHospitality() {
         return CostsOfHospitality;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "Name='" + Name + '\'' +
+                ", LastName='" + LastName + '\'' +
+                ", DateOfBirth='" + DateOfBirth + '\'' +
+                ", SSN=" + SSN +
+                ", BloodGroup='" + BloodGroup + '\'' +
+                ", CostsOfHospitality=" + CostsOfHospitality +
+                '}';
+    }
 }
