@@ -4,6 +4,7 @@
     package="com.example.qrscanner_appproject">
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.hardware.camera"/>
     <uses-permission android:name="android.hardware.camera.autofocus"/>
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />

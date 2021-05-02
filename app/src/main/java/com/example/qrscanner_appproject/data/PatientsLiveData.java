@@ -11,31 +11,31 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PatientsLiveData extends LiveData<Patient> {
 
-    private final ValueEventListener listener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            Patient patient = snapshot.getValue(Patient.class);
-            setValue(patient);
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-        }
-    };
-    DatabaseReference databaseReference;
-
-
-
-    @Override
-    protected void onActive() {
-        super.onActive();
-        databaseReference.addValueEventListener(listener);
-    }
-
-    @Override
-    protected void onInactive() {
-        super.onInactive();
-        databaseReference.removeEventListener(listener);
-    }
+//    private final ValueEventListener listener = new ValueEventListener() {
+//        @Override
+//        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//            Patient patient = snapshot.getValue(Patient.class);
+//            setValue(patient);
+//        }
+//
+//        @Override
+//        public void onCancelled(@NonNull DatabaseError error) {
+//        }
+//    };
+//    DatabaseReference databaseReference;
+//
+//
+//
+//    @Override
+//    protected void onActive() {
+//        super.onActive();
+//        databaseReference.addValueEventListener(listener);
+//    }
+//
+//    @Override
+//    protected void onInactive() {
+//        super.onInactive();
+//        databaseReference.removeEventListener(listener);
+//    }
 
 }

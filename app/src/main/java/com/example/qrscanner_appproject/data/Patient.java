@@ -6,37 +6,34 @@ public class Patient {
     private String Name;
     private String LastName;
     //Check if the import of date is good
-    private Date DateOfBirth;
-    private int SSN;
+    private String DateOfBirth;
+    private long SSN;
     private String BloodGroup;
     private double CostsOfHospitality;
 
 
-    public Patient(String name, String lastName, Date dateOfBirth, int SSN, String bloodGroup, double costsOfHospitality) {
-        Name = name;
-        LastName = lastName;
-        DateOfBirth = dateOfBirth;
-        this.SSN = SSN;
-        BloodGroup = bloodGroup;
-        CostsOfHospitality = costsOfHospitality;
-    }
-
     public Patient() {
     }
 
+
+
     public String getName() {
         return Name;
+    }
+
+    public void setName(String name){
+        this.Name = name;
     }
 
     public String getLastName() {
         return LastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return DateOfBirth;
     }
 
-    public int getSSN() {
+    public long getSSN() {
         return SSN;
     }
 

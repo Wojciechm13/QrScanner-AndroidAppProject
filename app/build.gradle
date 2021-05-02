@@ -55,6 +55,10 @@ dependencies {
     //Authentication
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
     implementation 'com.google.firebase:firebase-auth'
+
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+    // This dependency includes all material components of the android app.
+    implementation 'com.google.android.material:material:1.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

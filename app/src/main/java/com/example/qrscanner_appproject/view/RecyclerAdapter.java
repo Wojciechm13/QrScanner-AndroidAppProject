@@ -45,9 +45,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowCountTextView.setText(String.valueOf(position));
-//        holder.rowName.setText(patientsList.get(position));
-        holder.rowName.setText(patientsList.get(position).getName());
+//        holder.rowCountTextView.setText(String.valueOf(position));
+        holder.rowCountTextView.setText(patientsList.get(position).getName());
+        holder.rowName.setText(patientsList.get(position).getLastName());
 
     }
 
