@@ -46,9 +46,9 @@ public class patientsDetailsFragment extends Fragment {
 
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
         DOB.setText(patient.getDateOfBirth());
-//        SSN.setText((int) patient.getSSN());
+//        SSN.setText( patient.getSSN());
         BloodGroup.setText("Blood group: "+patient.getBloodGroup());
-//        CostOfHospitality.setText((int) patient.getCostsOfHospitality());
+//        CostOfHospitality.setText(patient.getCostsOfHospitality());
 
 
 
