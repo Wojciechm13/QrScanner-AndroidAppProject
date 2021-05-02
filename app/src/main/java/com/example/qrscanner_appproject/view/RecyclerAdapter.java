@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qrscanner_appproject.R;
+import com.example.qrscanner_appproject.data.Patient;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,15 +20,17 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
 
-    List<String> patientsList;
+//    List<String> patientsList;
+    ArrayList<Patient> patientsList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
     List<String> patientsListAll;
 
-    public RecyclerAdapter(List<String> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public RecyclerAdapter(ArrayList<Patient> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.patientsList = patientsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
-        this.patientsListAll = new ArrayList<>(patientsList);
+//        this.patientsListAll = new ArrayList<>(patientsList);
     }
+
 
     @NonNull
     @Override
@@ -43,7 +46,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowCountTextView.setText(String.valueOf(position));
-        holder.rowTextView.setText(patientsList.get(position));
+//        holder.rowName.setText(patientsList.get(position));
+        holder.rowName.setText(patientsList.get(position).getName());
 
     }
 
@@ -79,7 +83,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         @Override
         protected void publishResults(CharSequence constraint, FilterResults filterResults) {
             patientsList.clear();
-            patientsList.addAll((Collection<? extends String>) filterResults.values);
+//            patientsList.addAll((Collection<? extends String>) filterResults.values);
             notifyDataSetChanged();
         }
     };
@@ -92,13 +96,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView rowImageView;
-        TextView rowTextView, rowCountTextView;
+        TextView rowName, rowCountTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             rowImageView = itemView.findViewById(R.id.rowImageView);
-            rowTextView = itemView.findViewById(R.id.rowTextView);
+            rowName = itemView.findViewById(R.id.rowTextView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qrscanner_appproject.R;
+import com.example.qrscanner_appproject.data.Patient;
 import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -70,6 +72,13 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
                              Bundle savedInstanceState) {
         //ViewModel
         patientsViewModel = new ViewModelProvider(this).get(PatientsViewModel.class);
+        patientsViewModel.init();
+        patientsViewModel.getPatientsLiveData().observe(this.getViewLifecycleOwner(), new Observer<ArrayList<Patient>>() {
+            @Override
+            public void onChanged(ArrayList<Patient> patients) {
+                recyclerAdapter.notifyDataSetChanged();
+            }
+        });
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_patients, container, false);
 
@@ -78,7 +87,8 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
 
         //Init of recyclerView
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(patientsList, this);
+//        recyclerAdapter = new RecyclerAdapter(patientsList, this);
+        recyclerAdapter = new RecyclerAdapter(patientsViewModel.getPatientsLiveData().getValue(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -185,4 +195,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     public void onLongItemClick(int position) {
     //implement something here...
     }
+
+
 }
