@@ -42,7 +42,7 @@ public class PatientsRepository {
     }
 
     private void loadPatients() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Patients");
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://qrscannerandroidapp-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Patients");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
