@@ -63,6 +63,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //                Bundle bundle = new Bundle();
 //                bundle.putString("name", patientsList.get(position).getName());
 //                patientsDetailsFragment.setArguments(bundle);
+
+
                 patientsDetailsFragment.passPatient(patientsList.get(position));
                 appCompatActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.fragmentContainer, patientsDetailsFragment).addToBackStack(null).commit();
 

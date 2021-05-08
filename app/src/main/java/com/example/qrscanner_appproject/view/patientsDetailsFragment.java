@@ -36,6 +36,7 @@ public class patientsDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patients_details, container, false);
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+patient.toString());
+        System.out.println(patient);
 
 
         nameLastName = view.findViewById(R.id.name);
@@ -44,6 +45,7 @@ public class patientsDetailsFragment extends Fragment {
         BloodGroup = view.findViewById(R.id.BloodGroup);
         CostOfHospitality = view.findViewById(R.id.CostsOfHospitalization);
 
+        //todo add the observe
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
         DOB.setText(patient.getDateOfBirth());
 //        SSN.setText( patient.getSSN());

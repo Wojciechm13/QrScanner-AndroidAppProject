@@ -62,8 +62,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
 

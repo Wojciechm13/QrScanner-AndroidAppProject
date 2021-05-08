@@ -5,6 +5,8 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -18,8 +20,17 @@ import android.widget.TimePicker;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Measurement;
+import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
+import com.example.qrscanner_appproject.viewModel.addMeasurementsViewModel;
+import com.google.firebase.Timestamp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class patientsAddMeasurements extends Fragment {
@@ -29,6 +40,8 @@ public class patientsAddMeasurements extends Fragment {
     EditText tempInput, bloodInput, drugsInput, descriptionInput, healthConditionInput;
     Button saveMeasurements;
     Measurement measurement;
+    addMeasurementsViewModel addMeasurementsViewModel;
+
 
 
 
@@ -42,6 +55,11 @@ public class patientsAddMeasurements extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //ViewModel
+        addMeasurementsViewModel = new ViewModelProvider(this).get(addMeasurementsViewModel.class);
+        addMeasurementsViewModel.init();
+
+
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_patients_add_measurements, container, false);
 
@@ -52,7 +70,7 @@ public class patientsAddMeasurements extends Fragment {
         tempInput = view.findViewById(R.id.tempInput);
         bloodInput =  view.findViewById(R.id.bloodInput);
         drugsInput =  view.findViewById(R.id.drugsInput);
-        descriptionInput =  view.findViewById(R.id.drugsInput);
+        descriptionInput =  view.findViewById(R.id.descriptionInput);
         saveMeasurements =  view.findViewById(R.id.saveMeasurementsButton);
         healthConditionInput = view.findViewById(R.id.healthConditionInput);
 
@@ -76,7 +94,6 @@ public class patientsAddMeasurements extends Fragment {
             @Override
             public void onClick(View v) {
                 //System.out.println(timeTextView.getText() +"-"+ dateTextView.getText());
-               // long timeStamp = System.currentTimeMillis();
                 createMeasurement();
             }
         });
@@ -94,6 +111,9 @@ public class patientsAddMeasurements extends Fragment {
         measurement = new Measurement(temp, blood, drugs, desc, health);
         String s = measurement.toString();
         System.out.println(s);
+
+        addMeasurementsViewModel.saveMeasurements(measurement);
+
     }
 
     private void handleTimeButton() {

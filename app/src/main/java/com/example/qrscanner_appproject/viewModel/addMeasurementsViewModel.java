@@ -27,6 +27,6 @@ public class addMeasurementsViewModel extends AndroidViewModel {
 
 
     public void saveMeasurements(Measurement measurement){
-        //measurementsRepository.saveMeasurements(measurement);
+        measurementsRepository.saveMeasurements(measurement);
     }
 }
