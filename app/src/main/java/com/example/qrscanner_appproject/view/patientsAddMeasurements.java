@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.qrscanner_appproject.R;
+import com.example.qrscanner_appproject.data.Measurement;
 
 import java.util.Calendar;
 
@@ -24,6 +26,10 @@ public class patientsAddMeasurements extends Fragment {
 
     Button dateButton, timeButton;
     TextView dateTextView, timeTextView;
+    EditText tempInput, bloodInput, drugsInput, descriptionInput, healthConditionInput;
+    Button saveMeasurements;
+    Measurement measurement;
+
 
 
 
@@ -43,6 +49,14 @@ public class patientsAddMeasurements extends Fragment {
         timeButton = view.findViewById(R.id.timeButton);
         dateTextView = view.findViewById(R.id.dateTextView);
         timeTextView = view.findViewById(R.id.timeTextView);
+        tempInput = view.findViewById(R.id.tempInput);
+        bloodInput =  view.findViewById(R.id.bloodInput);
+        drugsInput =  view.findViewById(R.id.drugsInput);
+        descriptionInput =  view.findViewById(R.id.drugsInput);
+        saveMeasurements =  view.findViewById(R.id.saveMeasurementsButton);
+        healthConditionInput = view.findViewById(R.id.healthConditionInput);
+
+
 
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +72,28 @@ public class patientsAddMeasurements extends Fragment {
             }
         });
 
+        saveMeasurements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //System.out.println(timeTextView.getText() +"-"+ dateTextView.getText());
+               // long timeStamp = System.currentTimeMillis();
+                createMeasurement();
+            }
+        });
+
         return view;
+    }
+
+    private void createMeasurement(){
+        String temp = String.valueOf(tempInput.getText());
+        String blood = String.valueOf(bloodInput.getText());
+        String drugs = String.valueOf(drugsInput.getText());
+        String desc = String.valueOf(descriptionInput.getText());
+        String health = String.valueOf(healthConditionInput.getText());
+
+        measurement = new Measurement(temp, blood, drugs, desc, health);
+        String s = measurement.toString();
+        System.out.println(s);
     }
 
     private void handleTimeButton() {
