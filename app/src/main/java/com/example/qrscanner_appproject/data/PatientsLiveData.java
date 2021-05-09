@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class PatientsLiveData extends LiveData<Patient> {
+    //todo PatientsLiveData
 
 //    private final ValueEventListener listener = new ValueEventListener() {
 //        @Override

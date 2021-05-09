@@ -17,6 +17,7 @@ public class PatientsRepository {
 
     private static PatientsRepository instance;
     private ArrayList<Patient> patients = new ArrayList<>();
+    private ArrayList<String> keys = new ArrayList<>();
     private MutableLiveData<ArrayList<Patient>> patient = new MutableLiveData<>();
 
 
@@ -34,11 +35,16 @@ public class PatientsRepository {
         if (patients.size() == 0){
             loadPatients();
         }
-
-
         patient.setValue(patients);
 
         return patient;
+    }
+
+    public ArrayList<String> getKeys(){
+        if (keys.size() == 0) {
+            //loadPatients();
+        }
+        return keys;
     }
 
     private void loadPatients() {
@@ -49,6 +55,7 @@ public class PatientsRepository {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     patients.add(snapshot.getValue(Patient.class));
+                    keys.add(snapshot.getKey());
                }
                patient.postValue(patients);
             }

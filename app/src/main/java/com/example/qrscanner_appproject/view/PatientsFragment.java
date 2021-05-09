@@ -84,7 +84,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
         //Init of recyclerView
         recyclerView = view.findViewById(R.id.recyclerView);
 //        recyclerAdapter = new RecyclerAdapter(patientsList, this);
-        recyclerAdapter = new RecyclerAdapter(patientsViewModel.getPatientsLiveData().getValue(), this);
+        recyclerAdapter = new RecyclerAdapter(patientsViewModel.getPatientsLiveData().getValue(), patientsViewModel.getKeys(),this);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -96,7 +96,6 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
 
        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
        itemTouchHelper.attachToRecyclerView(recyclerView);
-
 
 
         return view;

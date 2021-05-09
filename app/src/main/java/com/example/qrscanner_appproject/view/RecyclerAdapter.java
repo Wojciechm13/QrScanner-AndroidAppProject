@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Patient;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,11 +31,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
     ArrayList<Patient> patientsList;
+    ArrayList<String> keys;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public RecyclerAdapter(ArrayList<Patient> patientsList, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public RecyclerAdapter(ArrayList<Patient> patientsList, ArrayList<String> keys, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.patientsList = patientsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
+        this.keys = keys;
     }
 
 
@@ -60,12 +63,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             public void onClick(View v) {
                 AppCompatActivity appCompatActivity = (AppCompatActivity)v.getContext();
                 patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("name", patientsList.get(position).getName());
-//                patientsDetailsFragment.setArguments(bundle);
-
-
                 patientsDetailsFragment.passPatient(patientsList.get(position));
+                patientsDetailsFragment.passKey(keys.get(position));
+
                 appCompatActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.fragmentContainer, patientsDetailsFragment).addToBackStack(null).commit();
 
             }
@@ -92,6 +92,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
     }
+
+
 
 
 

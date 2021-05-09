@@ -41,9 +41,7 @@ public class patientsAddMeasurements extends Fragment {
     Button saveMeasurements;
     Measurement measurement;
     addMeasurementsViewModel addMeasurementsViewModel;
-
-
-
+    String patientKey;
 
 
     @Override
@@ -57,7 +55,7 @@ public class patientsAddMeasurements extends Fragment {
                              Bundle savedInstanceState) {
         //ViewModel
         addMeasurementsViewModel = new ViewModelProvider(this).get(addMeasurementsViewModel.class);
-        addMeasurementsViewModel.init();
+        addMeasurementsViewModel.init(patientKey);
 
 
         // Inflate the layout for this fragment
@@ -73,7 +71,6 @@ public class patientsAddMeasurements extends Fragment {
         descriptionInput =  view.findViewById(R.id.descriptionInput);
         saveMeasurements =  view.findViewById(R.id.saveMeasurementsButton);
         healthConditionInput = view.findViewById(R.id.healthConditionInput);
-
 
 
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -107,13 +104,16 @@ public class patientsAddMeasurements extends Fragment {
         String drugs = String.valueOf(drugsInput.getText());
         String desc = String.valueOf(descriptionInput.getText());
         String health = String.valueOf(healthConditionInput.getText());
+        //todo add the time and date to the db
 
         measurement = new Measurement(temp, blood, drugs, desc, health);
-        String s = measurement.toString();
-        System.out.println(s);
-
         addMeasurementsViewModel.saveMeasurements(measurement);
+        addMeasurementsViewModel.savePatientKey(patientKey);
 
+    }
+
+    public void passPatientKey(String key){
+        patientKey = key;
     }
 
     private void handleTimeButton() {

@@ -18,6 +18,7 @@ public class MeasurementsRepository {
     private static MeasurementsRepository instance;
     private DatabaseReference myRef;
     private MeasurementLiveData measurementLiveData;
+    private String key;
 
     private MeasurementsRepository(){}
 
@@ -48,6 +49,10 @@ public class MeasurementsRepository {
                 Log.i("saveMeasurement", "Unable to send data" + e);
             }
         });
+    }
+
+    public void getKey(String key){
+        this.key = key;
     }
 
 

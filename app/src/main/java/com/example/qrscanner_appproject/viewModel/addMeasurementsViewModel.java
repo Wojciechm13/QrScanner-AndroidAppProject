@@ -20,13 +20,16 @@ public class addMeasurementsViewModel extends AndroidViewModel {
         measurementsRepository = MeasurementsRepository.getInstance();
     }
 
-    public void init(){
-        String userId = userRepository.getCurrentUser().getValue().getUid();
-        measurementsRepository.init(userId);
+    public void init(String key){
+        measurementsRepository.init(key);
     }
 
 
     public void saveMeasurements(Measurement measurement){
         measurementsRepository.saveMeasurements(measurement);
+    }
+
+    public void savePatientKey(String key){
+        measurementsRepository.getKey(key);
     }
 }

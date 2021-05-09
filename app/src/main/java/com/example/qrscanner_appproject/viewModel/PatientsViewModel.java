@@ -26,4 +26,8 @@ public class PatientsViewModel extends ViewModel {
     public LiveData<ArrayList<Patient>> getPatientsLiveData(){
         return patients;
     }
+
+    public ArrayList<String> getKeys(){
+        return PatientsRepository.getInstance().getKeys();
+    }
 }

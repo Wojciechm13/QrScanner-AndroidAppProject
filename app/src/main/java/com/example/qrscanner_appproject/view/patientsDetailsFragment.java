@@ -20,10 +20,7 @@ public class patientsDetailsFragment extends Fragment {
     Button addNewMeasurementsButton;
     TextView nameLastName, DOB, SSN, BloodGroup, CostOfHospitality;
     Patient patient;
-
-    //Fragments
-    com.example.qrscanner_appproject.view.patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
-
+    String key;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,9 +32,6 @@ public class patientsDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patients_details, container, false);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+patient.toString());
-        System.out.println(patient);
-
 
         nameLastName = view.findViewById(R.id.name);
         DOB = view.findViewById(R.id.DOB);
@@ -48,12 +42,14 @@ public class patientsDetailsFragment extends Fragment {
         //todo add the observe
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
         DOB.setText(patient.getDateOfBirth());
-//        SSN.setText( patient.getSSN());
+       SSN.setText( String.valueOf(patient.getSSN()));
         BloodGroup.setText("Blood group: "+patient.getBloodGroup());
-//        CostOfHospitality.setText(patient.getCostsOfHospitality());
+        CostOfHospitality.setText(String.valueOf(patient.getCostsOfHospitality()));
 
 
-
+        System.out.println(key);
+        patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
+        patientsAddMeasurements.passPatientKey(key);
 
 
 
@@ -76,4 +72,11 @@ public class patientsDetailsFragment extends Fragment {
     public void passPatient(Patient patient1){
         patient = patient1;
     }
+
+    public void passKey(String key){
+        this.key = key;
+    }
+
+
+
 }
