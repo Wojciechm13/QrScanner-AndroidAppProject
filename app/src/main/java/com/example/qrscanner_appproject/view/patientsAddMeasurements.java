@@ -104,9 +104,10 @@ public class patientsAddMeasurements extends Fragment {
         String drugs = String.valueOf(drugsInput.getText());
         String desc = String.valueOf(descriptionInput.getText());
         String health = String.valueOf(healthConditionInput.getText());
-        //todo add the time and date to the db
+        String date = String.valueOf(dateTextView.getText());
+        String time = String.valueOf(timeTextView.getText());
 
-        measurement = new Measurement(temp, blood, drugs, desc, health);
+        measurement = new Measurement(temp, blood, drugs, desc, health, date, time);
         addMeasurementsViewModel.saveMeasurements(measurement);
         addMeasurementsViewModel.savePatientKey(patientKey);
 

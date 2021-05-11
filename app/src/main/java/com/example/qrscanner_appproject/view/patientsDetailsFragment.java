@@ -42,9 +42,9 @@ public class patientsDetailsFragment extends Fragment {
         //todo add the observe
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
         DOB.setText(patient.getDateOfBirth());
-       SSN.setText( String.valueOf(patient.getSSN()));
+       //SSN.setText( String.valueOf(patient.getSSN()));
         BloodGroup.setText("Blood group: "+patient.getBloodGroup());
-        CostOfHospitality.setText(String.valueOf(patient.getCostsOfHospitality()));
+        //CostOfHospitality.setText(String.valueOf(patient.getCostsOfHospitality()));
 
 
         System.out.println(key);

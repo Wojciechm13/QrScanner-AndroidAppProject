@@ -5,7 +5,6 @@ import java.util.Date;
 public class Patient {
     private String Name;
     private String LastName;
-    //Check if the import of date is good
     private String DateOfBirth;
     private long SSN;
     private String BloodGroup;

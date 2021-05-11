@@ -8,13 +8,17 @@ public class Measurement {
     private String givenDrugs;
     private String description;
     private String healthCondition;
+    private String date;
+    private String time;
 
-    public Measurement(String temp, String bloodPressure, String givenDrugs, String description, String healthCondition) {
+    public Measurement(String temp, String bloodPressure, String givenDrugs, String description, String healthCondition, String date, String time) {
         this.temp = temp;
         this.bloodPressure = bloodPressure;
         this.givenDrugs = givenDrugs;
         this.description = description;
         this.healthCondition = healthCondition;
+        this.date = date;
+        this.time = time;
     }
 
     public Measurement() {
@@ -38,6 +42,14 @@ public class Measurement {
 
     public String getHealthCondition() {
         return healthCondition;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     @Override
