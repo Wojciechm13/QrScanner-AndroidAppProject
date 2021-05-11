@@ -2,6 +2,7 @@ package com.example.qrscanner_appproject.view;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -31,6 +34,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 
 public class patientsAddMeasurements extends Fragment {
@@ -71,6 +76,13 @@ public class patientsAddMeasurements extends Fragment {
         descriptionInput =  view.findViewById(R.id.descriptionInput);
         saveMeasurements =  view.findViewById(R.id.saveMeasurementsButton);
         healthConditionInput = view.findViewById(R.id.healthConditionInput);
+
+        //dropdown menu impl
+        Context context = this.getActivity();
+        String[] conditionsArray = context.getResources().getStringArray(R.array.healthConditions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_dropdown_item, conditionsArray);
+        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.healthConditionInput);
+        autoCompleteTextView.setAdapter(adapter);
 
 
         dateButton.setOnClickListener(new View.OnClickListener() {

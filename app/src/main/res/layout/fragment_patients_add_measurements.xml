@@ -136,7 +136,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/healthConditionDescription"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -144,11 +144,13 @@
             app:layout_constraintTop_toBottomOf="@+id/measurementDescription"
             tools:layout_editor_absoluteX="0dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/healthConditionInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Health condition" />
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="Health Condition" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
