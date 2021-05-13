@@ -4,17 +4,21 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.qrscanner_appproject.data.Measurement;
 import com.example.qrscanner_appproject.repository.MeasurementsRepository;
 import com.example.qrscanner_appproject.repository.UserRepository;
 
-public class addMeasurementsViewModel extends AndroidViewModel {
+import java.util.ArrayList;
+
+public class MeasurementsViewModel extends AndroidViewModel {
     private final MeasurementsRepository measurementsRepository;
     private final UserRepository userRepository;
 
 
-    public addMeasurementsViewModel(Application application) {
+    public MeasurementsViewModel(Application application) {
         super(application);
         userRepository = UserRepository.getInstance(application);
         measurementsRepository = MeasurementsRepository.getInstance();
@@ -29,7 +33,13 @@ public class addMeasurementsViewModel extends AndroidViewModel {
         measurementsRepository.saveMeasurements(measurement);
     }
 
-    public void savePatientKey(String key){
-        measurementsRepository.getKey(key);
+
+    public MutableLiveData<Measurement> getLatestMeasurements(String key){
+        return MeasurementsRepository.getInstance().getLatestMeasurement(key);
     }
+
+    //test
+//    public MutableLiveData<ArrayList<Measurement>> loadMeasurements(){
+//        return MeasurementsRepository.getInstance().loadAllMeasurements();
+//    }
 }

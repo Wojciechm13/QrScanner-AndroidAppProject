@@ -21,6 +21,7 @@ public class MeasurementLiveData extends LiveData<Measurement> {
         public void onCancelled(@NonNull DatabaseError error) {
 
         }
+
     };
 
     DatabaseReference databaseReference;

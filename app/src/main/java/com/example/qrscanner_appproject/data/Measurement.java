@@ -60,6 +60,8 @@ public class Measurement {
                 ", givenDrugs='" + givenDrugs + '\'' +
                 ", description='" + description + '\'' +
                 ", healthCondition='" + healthCondition + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 }

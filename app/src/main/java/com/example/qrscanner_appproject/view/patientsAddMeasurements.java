@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.text.format.DateFormat;
@@ -20,22 +19,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Measurement;
-import com.example.qrscanner_appproject.data.Patient;
-import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
-import com.example.qrscanner_appproject.viewModel.addMeasurementsViewModel;
-import com.google.firebase.Timestamp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 
 public class patientsAddMeasurements extends Fragment {
@@ -45,7 +35,7 @@ public class patientsAddMeasurements extends Fragment {
     EditText tempInput, bloodInput, drugsInput, descriptionInput, healthConditionInput;
     Button saveMeasurements;
     Measurement measurement;
-    addMeasurementsViewModel addMeasurementsViewModel;
+    MeasurementsViewModel MeasurementsViewModel;
     String patientKey;
 
 
@@ -59,8 +49,8 @@ public class patientsAddMeasurements extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //ViewModel
-        addMeasurementsViewModel = new ViewModelProvider(this).get(addMeasurementsViewModel.class);
-        addMeasurementsViewModel.init(patientKey);
+        MeasurementsViewModel = new ViewModelProvider(this).get(MeasurementsViewModel.class);
+        MeasurementsViewModel.init(patientKey);
 
 
         // Inflate the layout for this fragment
@@ -104,6 +94,7 @@ public class patientsAddMeasurements extends Fragment {
             public void onClick(View v) {
                 //System.out.println(timeTextView.getText() +"-"+ dateTextView.getText());
                 createMeasurement();
+                Toast.makeText(context, "Data saved successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -120,8 +111,8 @@ public class patientsAddMeasurements extends Fragment {
         String time = String.valueOf(timeTextView.getText());
 
         measurement = new Measurement(temp, blood, drugs, desc, health, date, time);
-        addMeasurementsViewModel.saveMeasurements(measurement);
-        addMeasurementsViewModel.savePatientKey(patientKey);
+        MeasurementsViewModel.saveMeasurements(measurement);
+
 
     }
 

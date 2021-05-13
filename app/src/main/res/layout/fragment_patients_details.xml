@@ -157,7 +157,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/temperatureField"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -168,7 +168,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/BloodPressureField"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -176,10 +176,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.344"
                     app:layout_constraintStart_toEndOf="@+id/textView15"
-                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                    app:layout_constraintTop_toBottomOf="@+id/temperatureField" />
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/DrugsField"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -189,7 +189,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.453"
                     app:layout_constraintStart_toEndOf="@+id/textView16"
-                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                    app:layout_constraintTop_toBottomOf="@+id/BloodPressureField" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
