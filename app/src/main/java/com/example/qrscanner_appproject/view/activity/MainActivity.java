@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +7,13 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.view.MainFragment;
-import com.example.qrscanner_appproject.view.PatientsFragment;
-import com.example.qrscanner_appproject.view.QrScannerFragment;
-import com.example.qrscanner_appproject.view.UserProfileFragment;
+import com.example.qrscanner_appproject.view.fragment.MainFragment;
+import com.example.qrscanner_appproject.view.fragment.PatientsFragment;
+import com.example.qrscanner_appproject.view.fragment.QrScannerFragment;
+import com.example.qrscanner_appproject.view.fragment.UserProfileFragment;
 import com.example.qrscanner_appproject.viewModel.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

@@ -18,7 +18,7 @@
         android:theme="@style/Theme.QrScannerAppProject">
 
 
-        <activity android:name=".view.SignInActivity">
+        <activity android:name=".view.activity.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +26,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.activity.MainActivity"/>
 
-        <activity android:name=".view.CaptureActivity"
+        <activity android:name=".view.activity.CaptureActivity"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden">

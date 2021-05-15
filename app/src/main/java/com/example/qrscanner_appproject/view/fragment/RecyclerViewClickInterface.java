@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.fragment;
 
 public interface RecyclerViewClickInterface {
 

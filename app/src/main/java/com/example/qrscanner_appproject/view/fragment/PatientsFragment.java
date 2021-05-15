@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.fragment;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
 import com.example.qrscanner_appproject.data.Patient;
@@ -28,7 +26,6 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -43,7 +40,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
     RecyclerAdapter recyclerAdapter;
 
     //fragments
-    com.example.qrscanner_appproject.view.patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
+    com.example.qrscanner_appproject.view.fragment.patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
 
 
 

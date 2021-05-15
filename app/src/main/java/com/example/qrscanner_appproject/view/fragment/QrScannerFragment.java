@@ -1,9 +1,12 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +15,22 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
+import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.view.activity.CaptureActivity;
+import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.ArrayList;
 
 
 public class QrScannerFragment extends Fragment implements View.OnClickListener{
 
    public Button scanButton;
+   PatientsViewModel patientsViewModel;
+   private ArrayList<String> keys;
+   private ArrayList<Patient> patientsList;
+   int position;
 
 
     public QrScannerFragment() {
@@ -41,7 +53,31 @@ public class QrScannerFragment extends Fragment implements View.OnClickListener{
             scanButton = view.findViewById(R.id.scanBtn);
             scanButton.setOnClickListener(this);
 
+        patientsViewModel = new ViewModelProvider(this).get(PatientsViewModel.class);
+        patientsViewModel.init();
+        patientsViewModel.getPatientsLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<Patient>>() {
+            @Override
+            public void onChanged(ArrayList<Patient> patients) {
+                patientsList = patients;
+            }
+        });
+        keys = patientsViewModel.getKeys();
+
+
+
             return view;
+    }
+
+    public int getPatientsPosition(String scannedValue){
+        for (int i = 0; i < keys.size(); i++) {
+            if (keys.get(i).equals(scannedValue)){
+                System.out.println("We got it!" + i);
+                System.out.println(keys.get(i));
+                position = i;
+            }
+
+        }
+        return position;
     }
 
     @Override
@@ -102,11 +138,22 @@ public class QrScannerFragment extends Fragment implements View.OnClickListener{
                 Toast.makeText(this.getContext(), "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 //Todo: `change the TOAST to AlertDialog'
-                Toast.makeText(this.getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(this.getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                changeFragment(result.getContents());
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void changeFragment(String scannedValue){
+        int position = getPatientsPosition(scannedValue);
+        AppCompatActivity appCompatActivity = (AppCompatActivity)getView().getContext();
+        patientsDetailsFragment patientsDetailsFragment = new patientsDetailsFragment();
+        patientsDetailsFragment.passPatient(patientsList.get(position));
+        patientsDetailsFragment.passKey(keys.get(position));
+
+        appCompatActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.fragmentContainer, patientsDetailsFragment).addToBackStack(null).commit();
     }
 
 }

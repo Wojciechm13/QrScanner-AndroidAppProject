@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.fragment;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.view;
+package com.example.qrscanner_appproject.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.qrscanner_appproject.R;
+import com.example.qrscanner_appproject.view.activity.MainActivity;
 import com.example.qrscanner_appproject.viewModel.SignInViewModel;
 import com.firebase.ui.auth.AuthUI;
 
