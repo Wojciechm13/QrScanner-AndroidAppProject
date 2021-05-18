@@ -1,14 +1,11 @@
 package com.example.qrscanner_appproject.repository;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.qrscanner_appproject.data.Measurement;
-import com.example.qrscanner_appproject.data.MeasurementLiveData;
-import com.example.qrscanner_appproject.data.Patient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -18,9 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MeasurementsRepository {
     private static MeasurementsRepository instance;
@@ -28,6 +23,7 @@ public class MeasurementsRepository {
     private MutableLiveData<Measurement> measurement = new MutableLiveData<>();
     private String timestamp;
     private MutableLiveData<ArrayList<Measurement>> measurements = new MutableLiveData<>();
+    private ArrayList<Measurement> measurementsArrayList = new ArrayList<>();
 
     private MeasurementsRepository(){}
 
@@ -65,8 +61,13 @@ public class MeasurementsRepository {
         return measurement;
     }
 
-    public MutableLiveData<ArrayList<Measurement>> getAllMeasurement(){
-        //loadAllMeasurements();
+    public MutableLiveData<ArrayList<Measurement>> getAllMeasurements(String key){
+        if (measurementsArrayList.size() != 0) {
+            measurementsArrayList.removeAll(measurementsArrayList);
+        }
+        loadAllMeasurements(key);
+        measurements.setValue(measurementsArrayList);
+        System.out.println("Repo: "+measurements.getValue().toString());
         return measurements;
     }
 
@@ -74,7 +75,6 @@ public class MeasurementsRepository {
 
     public void loadLatestMeasurement(String key) {
         Query ref = FirebaseDatabase.getInstance("https://qrscannerandroidapp-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Measurements").child(key).orderByValue().limitToLast(1);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!"+key);
         //Query ref = myRef.orderByValue().limitToLast(1);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -92,24 +92,27 @@ public class MeasurementsRepository {
         });
     }
 
-//    public void loadAllMeasurements() {
-//        Query ref = FirebaseDatabase.getInstance("https://qrscannerandroidapp-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Measurements").child("MZh5gS7C3w6QdnzBcEI").orderByValue();
-//
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-//                    measurements.add(snapshot.getValue(Measurement.class));
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+    public void loadAllMeasurements(String key) {
+        Query ref = FirebaseDatabase.getInstance("https://qrscannerandroidapp-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Measurements").child(key).orderByValue();
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    measurementsArrayList.add(snapshot.getValue(Measurement.class));
+                }
+                System.out.println("Repo loadAllMeasurements: "+measurementsArrayList.toString());
+                System.out.println("----------------------------");
+                measurements.postValue(measurementsArrayList);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 
 }

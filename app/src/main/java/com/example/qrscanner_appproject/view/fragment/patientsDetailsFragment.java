@@ -19,7 +19,7 @@ import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
 
 public class patientsDetailsFragment extends Fragment {
 
-    Button addNewMeasurementsButton;
+    Button addNewMeasurementsButton, seeAllMeasurements;
     TextView nameLastName, DOB, SSN, BloodGroup, CostOfHospitality, Temperature, BloodPressure, GivenDrugs;
     Patient patient;
     String key;
@@ -47,9 +47,9 @@ public class patientsDetailsFragment extends Fragment {
         CostOfHospitality = view.findViewById(R.id.CostsOfHospitalization);
 
         //Measurements
-        Temperature = view.findViewById(R.id.temperatureField);
-        BloodPressure = view.findViewById(R.id.BloodPressureField);
-        GivenDrugs = view.findViewById(R.id.DrugsField);
+        Temperature = view.findViewById(R.id.tempMeasurementHistory);
+        BloodPressure = view.findViewById(R.id.bloodMeasurementHistory);
+        GivenDrugs = view.findViewById(R.id.drugsMeasurementHistory);
 
         //todo add the observe
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
@@ -66,10 +66,7 @@ public class patientsDetailsFragment extends Fragment {
                 GivenDrugs.setText(measurement.getGivenDrugs());
             }
         });
-        //measurementsViewModel.loadMeasurements();
 
-
-        System.out.println(key);
         patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
         patientsAddMeasurements.passPatientKey(key);
 
@@ -83,11 +80,28 @@ public class patientsDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                transaction.replace(R.id.fragmentContainer, patientsAddMeasurements ); // give your fragment container id in first parameter
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.replace(R.id.fragmentContainer, patientsAddMeasurements );
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
+
+        MeasurementsHistory measurementsHistory = new MeasurementsHistory();
+
+
+        seeAllMeasurements = view.findViewById(R.id.seeAllMeasurements);
+        seeAllMeasurements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MeasurementsHistory measurementsHistory = new MeasurementsHistory();
+                measurementsHistory.passKey(key);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                transaction.replace(R.id.fragmentContainer, measurementsHistory );
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
         return view;
     }
 

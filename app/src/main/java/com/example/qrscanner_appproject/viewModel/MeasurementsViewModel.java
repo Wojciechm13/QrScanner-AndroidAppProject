@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class MeasurementsViewModel extends AndroidViewModel {
     private final MeasurementsRepository measurementsRepository;
     private final UserRepository userRepository;
+    private MutableLiveData<ArrayList<Measurement>> measurements;
 
 
     public MeasurementsViewModel(Application application) {
@@ -26,6 +27,8 @@ public class MeasurementsViewModel extends AndroidViewModel {
 
     public void init(String key){
         measurementsRepository.init(key);
+
+        measurements = measurementsRepository.getAllMeasurements(key);
     }
 
 
@@ -38,8 +41,16 @@ public class MeasurementsViewModel extends AndroidViewModel {
         return MeasurementsRepository.getInstance().getLatestMeasurement(key);
     }
 
-    //test
-//    public MutableLiveData<ArrayList<Measurement>> loadMeasurements(){
-//        return MeasurementsRepository.getInstance().loadAllMeasurements();
+
+//    public MutableLiveData<ArrayList<Measurement>> loadMeasurements(String key){
+//        return MeasurementsRepository.getInstance().getAllMeasurements(key);
+//    }
+
+    public MutableLiveData<ArrayList<Measurement>> loadMeasurements(){
+        return measurements;
+    }
+
+//    public void eraseArrayList(){
+//        measurements.removeA;
 //    }
 }

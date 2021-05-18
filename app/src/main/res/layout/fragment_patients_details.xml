@@ -97,7 +97,7 @@
                 android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/dateTimeMeasurementHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -116,7 +116,7 @@
                     android:layout_marginTop="24dp"
                     android:text="Temperature:"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                    app:layout_constraintTop_toBottomOf="@+id/dateTimeMeasurementHistory" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -157,7 +157,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <TextView
-                    android:id="@+id/temperatureField"
+                    android:id="@+id/tempMeasurementHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -165,10 +165,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.398"
                     app:layout_constraintStart_toEndOf="@+id/textView11"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                    app:layout_constraintTop_toBottomOf="@+id/dateTimeMeasurementHistory" />
 
                 <TextView
-                    android:id="@+id/BloodPressureField"
+                    android:id="@+id/bloodMeasurementHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -176,10 +176,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.344"
                     app:layout_constraintStart_toEndOf="@+id/textView15"
-                    app:layout_constraintTop_toBottomOf="@+id/temperatureField" />
+                    app:layout_constraintTop_toBottomOf="@+id/tempMeasurementHistory" />
 
                 <TextView
-                    android:id="@+id/DrugsField"
+                    android:id="@+id/drugsMeasurementHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -189,10 +189,25 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.453"
                     app:layout_constraintStart_toEndOf="@+id/textView16"
-                    app:layout_constraintTop_toBottomOf="@+id/BloodPressureField" />
+                    app:layout_constraintTop_toBottomOf="@+id/bloodMeasurementHistory" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <Button
+                android:id="@+id/seeAllMeasurements"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="32dp"
+                android:background="#fff"
+                android:backgroundTint="@color/design_default_color_secondary"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:padding="10dp"
+                android:text="See all measurements"
+                 />
 
             <TextView
                 android:id="@+id/BloodGroup"
