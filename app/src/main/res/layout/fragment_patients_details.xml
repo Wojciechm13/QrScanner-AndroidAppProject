@@ -78,6 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -138,12 +139,22 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Health condition:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
                 <Button
                     android:id="@+id/addNewMeasurementsButton"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="28dp"
                     android:background="#fff"
                     android:clickable="true"
                     android:elevation="4dp"
@@ -152,9 +163,10 @@
                     android:text="Add new Measurements"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintHorizontal_bias="0.508"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"
+                    app:layout_constraintVertical_bias="0.791" />
 
                 <TextView
                     android:id="@+id/tempMeasurementHistory"
@@ -185,11 +197,22 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="32dp"
                     android:text="Placebo"
-                    app:layout_constraintBottom_toTopOf="@+id/addNewMeasurementsButton"
+                    app:layout_constraintBottom_toTopOf="@+id/healthMeasurementHistory"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.453"
                     app:layout_constraintStart_toEndOf="@+id/textView16"
                     app:layout_constraintTop_toBottomOf="@+id/bloodMeasurementHistory" />
+
+                <TextView
+                    android:id="@+id/healthMeasurementHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Urgent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.344"
+                    app:layout_constraintStart_toEndOf="@+id/textView17"
+                    app:layout_constraintTop_toBottomOf="@+id/drugsMeasurementHistory" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

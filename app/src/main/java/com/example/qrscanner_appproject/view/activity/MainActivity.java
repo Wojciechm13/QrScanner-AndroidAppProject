@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         viewModel.init();
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
+
+
 
         //Bottom navigation
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -106,9 +109,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         finish();
     }
 
-//    public void signOut(View v) {
-//        viewModel.signOut();
-//    }
 
 }
 

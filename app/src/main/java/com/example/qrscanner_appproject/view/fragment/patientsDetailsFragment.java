@@ -1,7 +1,10 @@
 package com.example.qrscanner_appproject.view.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,7 +23,7 @@ import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
 public class patientsDetailsFragment extends Fragment {
 
     Button addNewMeasurementsButton, seeAllMeasurements;
-    TextView nameLastName, DOB, SSN, BloodGroup, CostOfHospitality, Temperature, BloodPressure, GivenDrugs;
+    TextView nameLastName, DOB, SSN, BloodGroup, CostOfHospitality, Temperature, BloodPressure, GivenDrugs, HealthCondition;
     Patient patient;
     String key;
     MeasurementsViewModel measurementsViewModel;
@@ -45,6 +48,7 @@ public class patientsDetailsFragment extends Fragment {
         SSN = view.findViewById(R.id.SSN);
         BloodGroup = view.findViewById(R.id.BloodGroup);
         CostOfHospitality = view.findViewById(R.id.CostsOfHospitalization);
+        HealthCondition = view.findViewById(R.id.healthMeasurementHistory);
 
         //Measurements
         Temperature = view.findViewById(R.id.tempMeasurementHistory);
@@ -61,11 +65,57 @@ public class patientsDetailsFragment extends Fragment {
         measurementsViewModel.getLatestMeasurements(key).observe(this.getActivity(), measurement -> {
             if (measurement != null){
                 System.out.println(measurement.toString());
-                Temperature.setText(measurement.getTemp());
-                BloodPressure.setText(measurement.getBloodPressure());
+                Temperature.setText(measurement.getTemp() + " Celsius degrees");
+                BloodPressure.setText(measurement.getBloodPressure() + " mmHg");
                 GivenDrugs.setText(measurement.getGivenDrugs());
+                HealthCondition.setText(measurement.getHealthCondition());
+
+                switch(HealthCondition.getText().toString().toLowerCase()){
+                    case "immediate":
+                        HealthCondition.setTextColor(Color.RED);
+                        break;
+
+                    case "very urgent":
+                        HealthCondition.setTextColor(getResources().getColor(R.color.orange));
+                        break;
+
+                    case "urgent":
+                        HealthCondition.setTextColor(Color.YELLOW);
+                        break;
+
+                    case "standard":
+                        HealthCondition.setTextColor(Color.GREEN);
+                        break;
+
+                    case "non-urgent":
+                        HealthCondition.setTextColor(Color.BLUE);
+                        break;
+                }
             }
         });
+
+        switch(HealthCondition.getText().toString().toLowerCase()){
+            case "immediate":
+                HealthCondition.setTextColor(Color.RED);
+                break;
+
+            case "very urgent":
+                HealthCondition.setTextColor(getResources().getColor(R.color.orange, null));
+                break;
+
+            case "urgent":
+                HealthCondition.setTextColor(Color.YELLOW);
+                break;
+
+            case "standard":
+                HealthCondition.setTextColor(Color.GREEN);
+                break;
+
+            case "non-urgent":
+                HealthCondition.setTextColor(Color.BLUE);
+                break;
+        }
+
 
         patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
         patientsAddMeasurements.passPatientKey(key);
