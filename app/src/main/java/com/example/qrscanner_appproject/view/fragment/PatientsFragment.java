@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 
-public class PatientsFragment extends Fragment implements RecyclerViewClickInterface {
+public class PatientsFragment extends Fragment {
 
 
     //ViewModel
@@ -80,7 +80,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
 
         //Init of recyclerView
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(patientsViewModel.getPatientsLiveData().getValue(), patientsViewModel.getKeys(),this);
+        recyclerAdapter = new RecyclerAdapter(patientsViewModel.getPatientsLiveData().getValue(), patientsViewModel.getKeys());
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -110,6 +110,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
             return false;
         }
 
+        //todo implement swiping functionality with firebase
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
@@ -155,21 +156,7 @@ public class PatientsFragment extends Fragment implements RecyclerViewClickInter
         }
     };
 
-    //Method for handling a click on a position from recyclerView
-    @Override
-    public void onItemClick(int position) {
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-//        transaction.replace(R.id.fragmentContainer, patientsDetailsFragment ); // give your fragment container id in first parameter
-//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//        transaction.commit();
 
-    }
-
-    //Method for handling a longClick on a position from recyclerView
-    @Override
-    public void onLongItemClick(int position) {
-    //implement something here...
-    }
 
 
 }

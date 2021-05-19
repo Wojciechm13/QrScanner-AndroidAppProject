@@ -20,11 +20,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     ArrayList<Patient> patientsList;
     ArrayList<String> keys;
-    private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public RecyclerAdapter(ArrayList<Patient> patientsList, ArrayList<String> keys, RecyclerViewClickInterface recyclerViewClickInterface) {
+
+    public RecyclerAdapter(ArrayList<Patient> patientsList, ArrayList<String> keys) {
         this.patientsList = patientsList;
-        this.recyclerViewClickInterface = recyclerViewClickInterface;
         this.keys = keys;
     }
 
