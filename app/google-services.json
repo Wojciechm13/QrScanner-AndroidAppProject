@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "722407281403-ni1c1rcvcjsal34rarct78t4nsgoqsrm.apps.googleusercontent.com",
+          "client_id": "722407281403-sb13864q79qljosraulkui2m0f38qtf4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.qrscanner_appproject",
-            "certificate_hash": "2c9515eb2bbe9bbab207e28e2422a59ee46fabc0"
+            "certificate_hash": "15930ee7fac704b29cb4a72f0d79b6ce1439fb47"
           }
         },
         {

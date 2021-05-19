@@ -134,11 +134,8 @@ public class QrScannerFragment extends Fragment implements View.OnClickListener{
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if(result.getContents() == null) {
-                //Todo: `change the TOAST to AlertDialog'
                 Toast.makeText(this.getContext(), "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                //Todo: `change the TOAST to AlertDialog'
-                //Toast.makeText(this.getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                 changeFragment(result.getContents());
             }
         } else {

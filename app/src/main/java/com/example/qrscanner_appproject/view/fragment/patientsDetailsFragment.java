@@ -55,7 +55,7 @@ public class patientsDetailsFragment extends Fragment {
         BloodPressure = view.findViewById(R.id.bloodMeasurementHistory);
         GivenDrugs = view.findViewById(R.id.drugsMeasurementHistory);
 
-        //todo add the observe
+
         nameLastName.setText(patient.getLastName()+" "+patient.getName());
         DOB.setText(patient.getDateOfBirth());
         SSN.setText( "SSN: "+ String.valueOf(patient.getSSN()));
