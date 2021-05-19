@@ -64,7 +64,6 @@ public class patientsDetailsFragment extends Fragment {
 
         measurementsViewModel.getLatestMeasurements(key).observe(this.getActivity(), measurement -> {
             if (measurement != null){
-                System.out.println(measurement.toString());
                 Temperature.setText(measurement.getTemp() + " Celsius degrees");
                 BloodPressure.setText(measurement.getBloodPressure() + " mmHg");
                 GivenDrugs.setText(measurement.getGivenDrugs());
@@ -76,7 +75,7 @@ public class patientsDetailsFragment extends Fragment {
                         break;
 
                     case "very urgent":
-                        HealthCondition.setTextColor(getResources().getColor(R.color.orange));
+                        HealthCondition.setTextColor(Color.parseColor("#FFA500"));
                         break;
 
                     case "urgent":
@@ -94,27 +93,7 @@ public class patientsDetailsFragment extends Fragment {
             }
         });
 
-        switch(HealthCondition.getText().toString().toLowerCase()){
-            case "immediate":
-                HealthCondition.setTextColor(Color.RED);
-                break;
 
-            case "very urgent":
-                HealthCondition.setTextColor(getResources().getColor(R.color.orange, null));
-                break;
-
-            case "urgent":
-                HealthCondition.setTextColor(Color.YELLOW);
-                break;
-
-            case "standard":
-                HealthCondition.setTextColor(Color.GREEN);
-                break;
-
-            case "non-urgent":
-                HealthCondition.setTextColor(Color.BLUE);
-                break;
-        }
 
 
         patientsAddMeasurements patientsAddMeasurements = new patientsAddMeasurements();
