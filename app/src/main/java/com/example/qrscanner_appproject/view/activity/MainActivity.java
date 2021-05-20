@@ -8,6 +8,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     BottomNavigationView bottomNavigationView;
     private MainActivityViewModel viewModel;
+    boolean toastDisplayed = false;
 
 
     @Override
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         viewModel.init();
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
-
 
 
         //Bottom navigation
@@ -76,9 +77,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
             if (user != null) {
-                String message = "Welcome " + user.getDisplayName();
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT ).show();
-//                welcomeMessage.setText(message);
+                if (!toastDisplayed) {
+                    String message = "Welcome " + user.getDisplayName();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT ).show();
+                    toastDisplayed = true;
+                }
+
             } else
                 startLoginActivity();
         });
