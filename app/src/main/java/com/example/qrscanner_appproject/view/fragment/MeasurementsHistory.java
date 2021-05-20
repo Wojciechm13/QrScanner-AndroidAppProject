@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,15 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Measurement;
+import com.example.qrscanner_appproject.model.Measurement;
 import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 
 public class MeasurementsHistory extends Fragment {

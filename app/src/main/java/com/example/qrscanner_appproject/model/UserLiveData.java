@@ -1,4 +1,4 @@
-package com.example.qrscanner_appproject.data;
+package com.example.qrscanner_appproject.model;
 
 import androidx.lifecycle.LiveData;
 

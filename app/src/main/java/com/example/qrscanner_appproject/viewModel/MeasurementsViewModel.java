@@ -2,12 +2,10 @@ package com.example.qrscanner_appproject.viewModel;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.qrscanner_appproject.data.Measurement;
+import com.example.qrscanner_appproject.model.Measurement;
 import com.example.qrscanner_appproject.repository.MeasurementsRepository;
 import com.example.qrscanner_appproject.repository.UserRepository;
 

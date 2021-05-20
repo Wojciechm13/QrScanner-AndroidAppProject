@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Measurement;
+import com.example.qrscanner_appproject.model.Measurement;
 
 import java.util.ArrayList;
 

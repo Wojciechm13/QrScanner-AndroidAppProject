@@ -1,6 +1,4 @@
-package com.example.qrscanner_appproject.data;
-
-import java.util.Date;
+package com.example.qrscanner_appproject.model;
 
 public class Patient {
     private String Name;

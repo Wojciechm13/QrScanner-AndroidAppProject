@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.model.Patient;
 
 import java.util.ArrayList;
 

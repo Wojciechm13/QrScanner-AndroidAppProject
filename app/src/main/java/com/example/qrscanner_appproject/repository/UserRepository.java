@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.qrscanner_appproject.data.UserLiveData;
+import com.example.qrscanner_appproject.model.UserLiveData;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseUser;
 

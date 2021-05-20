@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.model.Patient;
 import com.example.qrscanner_appproject.view.activity.CaptureActivity;
 import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
 import com.google.zxing.integration.android.IntentIntegrator;

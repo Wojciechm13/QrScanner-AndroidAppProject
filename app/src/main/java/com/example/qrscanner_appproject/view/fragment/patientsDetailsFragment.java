@@ -3,8 +3,6 @@ package com.example.qrscanner_appproject.view.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.model.Patient;
 import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
 
 

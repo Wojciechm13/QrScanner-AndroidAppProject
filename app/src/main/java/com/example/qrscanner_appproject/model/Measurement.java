@@ -1,6 +1,4 @@
-package com.example.qrscanner_appproject.data;
-
-import java.sql.Timestamp;
+package com.example.qrscanner_appproject.model;
 
 public class Measurement {
     private String temp;

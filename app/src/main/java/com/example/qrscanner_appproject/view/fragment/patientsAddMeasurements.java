@@ -22,7 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Measurement;
+import com.example.qrscanner_appproject.model.Measurement;
 import com.example.qrscanner_appproject.viewModel.MeasurementsViewModel;
 
 import java.util.Calendar;

@@ -20,7 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qrscanner_appproject.R;
-import com.example.qrscanner_appproject.data.Patient;
+import com.example.qrscanner_appproject.model.Patient;
 import com.example.qrscanner_appproject.viewModel.PatientsViewModel;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
