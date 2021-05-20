@@ -29,7 +29,7 @@ Could Have:
 
 Will not Have:
 - QR code generator
-- Registration functionality <- NOT IMPLEMENTED
+- Registration functionality <- IMPLEMENTED
 
 
 
