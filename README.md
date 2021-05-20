@@ -21,12 +21,18 @@ Must Have:
 Should Have:
 - Intuitive UI
 - Possibility to modify/add new information to the patient’s data
-- ToDo/Notes section connected with the specific patient, so that doctor can create reminder to do some specific action with that patient
+- ToDo/Notes section connected with the specific patient, so that doctor can create reminder to do some specific action with that patient <-  IMPLEMENTED DESCRIPTION IN MEASUREMENTS INSTEAD OF THIS ONE
 - Log out functionality
 
 Could Have:
-- Dark mode
+- Dark mode <- NOT IMPLEMENTED
 
 Will not Have:
 - QR code generator
-- Registration functionality
+- Registration functionality <- NOT IMPLEMENTED
+
+Libraries I used:
+- Library for rounded pictures: implementation 'de.hdodenhof:circleimageview:2.1.0' 
+- Library that automatically puts "." or "/" in the temperature and blood pressure: implementation 'com.github.santalu:maskara:1.0.0'
+- Library for QrCodes scanning: implementation 'com.journeyapps:zxing-android-embedded:3.4.0', https://github.com/journeyapps/zxing-android-embedded
+- Library used for swiping on the patients left and right to delete them or add to "favourite" (not implemented in the end, but for future implementaion):  implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3' ,https://github.com/xabaras/RecyclerViewSwipeDecorator
