@@ -31,8 +31,14 @@ Will not Have:
 - QR code generator
 - Registration functionality <- NOT IMPLEMENTED
 
+
+
 Libraries I used:
 - Library for rounded pictures: implementation 'de.hdodenhof:circleimageview:2.1.0' 
 - Library that automatically puts "." or "/" in the temperature and blood pressure: implementation 'com.github.santalu:maskara:1.0.0'
 - Library for QrCodes scanning: implementation 'com.journeyapps:zxing-android-embedded:3.4.0', https://github.com/journeyapps/zxing-android-embedded
 - Library used for swiping on the patients left and right to delete them or add to "favourite" (not implemented in the end, but for future implementaion):  implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3' ,https://github.com/xabaras/RecyclerViewSwipeDecorator
+
+
+Youtube presentation link: https://youtu.be/w3m8kUnkioY
+Example of the QrCode to test functionality: https://drive.google.com/file/d/1tMtALPHodIw2bpMUQpYoTY6Kf_Jdw3cx/view?usp=sharing
